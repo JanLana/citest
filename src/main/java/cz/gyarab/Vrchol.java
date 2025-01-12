@@ -14,6 +14,11 @@ public class Vrchol {
     private String jmeno;
     private Collection<Vrchol> sousedi;
 
+    /**
+     * vrchol grafu
+     *
+     * @param jmeno jmeno vrcholu
+     */
     public Vrchol(String jmeno) {
         this.jmeno = jmeno;
         sousedi = new HashSet<>();
@@ -21,6 +26,8 @@ public class Vrchol {
 
     /**
      * pridej vrchol `v` do seznamu sousednich vrcholu
+     * 
+     * @param v vrchol ktery je muj soused
      */
     public void pridejSouseda(Vrchol v) {
         sousedi.add(v);
@@ -28,6 +35,8 @@ public class Vrchol {
 
     /**
      * otestuje, zda je vrchol `v` mym sousdem
+     * 
+     * @param v vrchol ktery je muj soused
      * 
      * @return true pokud je v mym primym sousedem
      */
@@ -37,6 +46,8 @@ public class Vrchol {
 
     /**
      * otestuje, zda existuje cesta mezi mnou a vrcholem `v`
+     *
+     * @param v vrchol ke kteremu vede cesta
      * 
      * @return true pokud cesta existuje
      */

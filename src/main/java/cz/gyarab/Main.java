@@ -1,17 +1,20 @@
 package cz.gyarab;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import java.io.IOException;
 
-/** main trida */
+/** main trida. Cely program je tu... */
 public class Main {
-     
+
+    /** main konstruktor - uplne k nicemu :-) */
+    public Main() {}
+
     /**
      * main metoda
      * 
      * @param args argumenty program
-     * @throws JsonProcessingException 
+     * @throws IOException kdyz neco nevyjde ...
      */
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) throws IOException {
         var g = new Graf();
         var v1 = g.dejVrchol("v1");
         var v2 = g.dejVrchol("v2");

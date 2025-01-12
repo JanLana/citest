@@ -1,10 +1,15 @@
 package cz.gyarab;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlFactory;
 
 import lombok.Data;
 
@@ -47,14 +52,14 @@ public class Graf {
     /**
      * ulozi existujici graf do souboru. (doporucuji pouzit serializaci :-))
      * @param jmenoSouboru jmeno souboru do ktereho ulozi graf
-     * @throws JsonProcessingException 
+     * @throws IOException kdyz neco nevyjde...
      */
-    public void ulozGrafDoSouboru(String jmenoSouboru) throws JsonProcessingException {
-        XmlMapper mapper = new XmlMapper();
-        String xml = mapper.writeValueAsString(this);
-        System.out.println(xml);
+    public void ulozGrafDoSouboru(String jmenoSouboru) throws IOException {
+        ObjectMapper mapper = new ObjectMapper(); // new YAMLFactory());
+        mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.writeValue(new File(jmenoSouboru), this);
 
-
-        // TODO
+        System.out.println(mapper.writeValueAsString(this));
     }
 }
