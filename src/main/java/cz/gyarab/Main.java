@@ -23,8 +23,6 @@ public class Main {
         v1.pridejSouseda(v2);
         v2.pridejSouseda(v3);
 
-        g.ulozGrafDoSouboru("graf.dat");
-
-        System.out.println("JJJJJJJJ");
+        g.ulozGrafDoSouboru("graf.json");
     }
 }
